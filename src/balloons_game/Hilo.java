@@ -16,8 +16,10 @@ public class Hilo extends Thread{
     private int x = 0;
     private int y = 15;
     private int counter = 0;
+    private int width = 50;
+    private int height = 70;
     public Image img;
-    public final String url = "/balloon.png";
+    public final String url = "balloon.png";
     public boolean is_alive = true;
     public Hilo(){
         this.img = new ImageIcon(getClass().getClassLoader().getResource(this.url)).getImage();
@@ -36,7 +38,8 @@ public class Hilo extends Thread{
     }
     public void updateMovement(){
         counter++;
-        this.x += Math.sin(this.counter * Math.PI / 90)*5;
+        Double speed = (Math.sin(this.counter * Math.PI / 117)*8);
+        this.x += speed.intValue();
     }
     public boolean get_is_alive(){
         return this.is_alive;
@@ -49,5 +52,11 @@ public class Hilo extends Thread{
     }
     public int get_y(){
         return this.y;
+    }
+    public int get_width(){
+        return this.width;
+    }
+    public int get_height(){
+        return this.height;
     }
 }
