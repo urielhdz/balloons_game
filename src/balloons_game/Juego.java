@@ -16,9 +16,9 @@ import java.util.ArrayList;
  */
 public class Juego extends Canvas implements Runnable{
     
-    ArrayList<Thread> enemigos;
+    ArrayList<Hilo> enemigos;
     public Juego(){
-        this.enemigos = new ArrayList<Thread>();
+        this.enemigos = new ArrayList<Hilo>();
     }
     @Override
     public void paint(Graphics g){
@@ -26,8 +26,8 @@ public class Juego extends Canvas implements Runnable{
         Graphics2D draw = (Graphics2D) g;
         draw.setColor(Color.white);
         draw.fillRect(0, 0, this.getWidth(), this.getHeight());
-        for(Thread enemigo : enemigos){
-//            g.drawImage(enemigo.get, WIDTH, WIDTH, this);
+        for(Hilo enemigo : enemigos){
+            g.drawImage(enemigo.get_img(), enemigo.get_x(), enemigo.get_y(),30, 50, this);
        }
     }
     @Override

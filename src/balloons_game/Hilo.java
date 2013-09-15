@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  *
  * @author Uriel
  */
-public class Hilo implements Runnable{
+public class Hilo extends Thread{
     private int x = 0;
     private int y = 15;
     private int counter = 0;
@@ -43,5 +43,11 @@ public class Hilo implements Runnable{
     }
     public Image get_img(){
         return this.img;
+    }
+    public int get_x(){
+        return this.x;
+    }
+    public int get_y(){
+        return this.y;
     }
 }
