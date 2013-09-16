@@ -26,7 +26,7 @@ public class Hilo extends Thread{
     }
     @Override
     public void run() {
-        while(true && is_alive){
+        while(is_alive){
             try{
                 Thread.sleep(1000 / 60);
                 updateMovement();                
@@ -58,5 +58,8 @@ public class Hilo extends Thread{
     }
     public int get_height(){
         return this.height;
+    }
+    public void kill(){
+        this.is_alive = false;
     }
 }

@@ -8,13 +8,13 @@ package balloons_game;
  *
  * @author THE BCDE
  */
-public class interfaz extends javax.swing.JFrame {
+public class Interfaz extends javax.swing.JFrame {
 
     /**
      * Creates new form interfaz
      */
     private Juego j;
-    public interfaz() {
+    public Interfaz() {
         initComponents();
         j = new Juego();
         j.setBounds(120, 5, 560, 370);
@@ -116,7 +116,6 @@ public class interfaz extends javax.swing.JFrame {
         String tiempo = jTextField1.getText();
         int tiempo2 =Integer.parseInt(tiempo);
         
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -140,20 +139,20 @@ public class interfaz extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new interfaz().setVisible(true);
+                new Interfaz().setVisible(true);
             }
         });
     }
