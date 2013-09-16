@@ -69,11 +69,13 @@ public class Herramientas extends JPanel implements ActionListener{
             int tiempo = Integer.parseInt("0"+tiempotxt.getText());
             System.out.println(tiempo);
         } else if(elegido == btnDibujar){
-            
+            li.rotar(angulo+=20);
+            System.out.println(angulo);
         }
         
     }
     
+    int angulo=0;
     public void setLienzo(Lienzo li){
         this.li = li;
     }
