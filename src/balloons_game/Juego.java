@@ -106,6 +106,8 @@ public class Juego extends Canvas implements Runnable{
                 bufferGraphics.drawImage(flecha.get_img(), flecha.get_x(), flecha.get_y(),flecha.get_width(), flecha.get_height(), this);
                 for(Hilo enemigo : enemigos){
                     if(colision(flecha,enemigo)){
+                        enemigo.morir();
+                        bufferGraphics.drawImage(enemigo.get_img(), enemigo.get_x(), enemigo.get_y(),enemigo.get_width(), enemigo.get_height(), this);
                         enemigo.kill();
                         enemigos.remove(enemigo);
                         flecha.is_alive = false;
@@ -166,5 +168,11 @@ public class Juego extends Canvas implements Runnable{
 			hit = true;
 	}
 	return hit;
+    }
+    
+    public void pausar(int pausa){
+        for(Hilo enemigo : enemigos){
+            enemigo.pausar(pausa);
+       }
     }
 }

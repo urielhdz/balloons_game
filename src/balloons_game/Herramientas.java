@@ -56,13 +56,13 @@ public class Herramientas extends JPanel implements ActionListener,KeyListener{
         
         if(elegido == btnPausar){
             int tiempo = Integer.parseInt("0"+tiempotxt.getText());
+            li.pausar(tiempo);
         } else if(elegido == btnDibujar){
             this.li.add_enemigo(new Hilo());
         }
         
     }
     
-    int angulo=0;
     public void setLienzo(Juego li){
         this.li = li;
         li.addKeyListener(this);
