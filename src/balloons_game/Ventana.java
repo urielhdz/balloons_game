@@ -47,7 +47,6 @@ public class Ventana extends JFrame{
         toolbar.setLienzo(li);
         setVisible(true);
         
-        
     }
     
 }

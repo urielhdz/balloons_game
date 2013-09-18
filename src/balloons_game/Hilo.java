@@ -5,7 +5,8 @@
 package balloons_game;
 
 import java.awt.Image;
-import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -18,6 +19,10 @@ public class Hilo extends Thread{
     private int counter = 0;
     private int width = 50;
     private int height = 70;
+    
+    private boolean pausa = false;
+    private long tiempoPausa;
+    
     public Image img;
     public final String url = "balloon.png";
     public boolean is_alive = true;
@@ -26,15 +31,33 @@ public class Hilo extends Thread{
     }
     @Override
     public void run() {
-        while(is_alive){
-            try{
-                Thread.sleep(1000 / 60);
-                updateMovement();                
+            while(is_alive){
+                try{
+                    Thread.sleep(1000 / 60);                
+                    updateMovement();                
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
+                
+                if(pausa){
+                    try {
+                        Thread.sleep(this.tiempoPausa);
+                        pausa = false;
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
-            catch (Exception e){
-                System.out.println(e);
-            }
-        }
+    }
+    
+    public void pausar(int tiempoPausa){
+        
+        this.tiempoPausa = tiempoPausa;
+        pausa = true;
+    }
+    public void morir(){
+        this.img = new ImageIcon(getClass().getClassLoader().getResource("deadBallon.png")).getImage();
     }
     public void updateMovement(){
         counter++;
