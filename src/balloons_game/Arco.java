@@ -1,8 +1,6 @@
 package balloons_game;
 
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +40,7 @@ public class Arco {
     }
     
     public void dibujarArco(){
-        
+        //g.drawImage(getImagen(), getX(), getY(), this);
     }
     
     public void disparar(){

@@ -37,27 +37,8 @@ public class Herramientas extends JPanel implements ActionListener{
         btnPausar.addActionListener(this);
         btnDibujar.addActionListener(this);
         
-        /******************Evento btnPausar********************************
-        btnPausar.addActionListener(new ActionListener(){
-
-            public void actionPerformed(ActionEvent e) {
-                if(tiempotxt.getText() == null){
-                    
-                } 
-                int tiempo = Integer.parseInt(tiempotxt.getText());
-                 
-            }
-        });
-        /******************Evento btnDibujar*******************************
-        btnDibujar.addActionListener(new ActionListener(){
-
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        });*/
-        
-        add(btnPausar);
         add(btnDibujar);
+        add(btnPausar);
         add(tiempotxt);
     }
 
@@ -69,13 +50,12 @@ public class Herramientas extends JPanel implements ActionListener{
             int tiempo = Integer.parseInt("0"+tiempotxt.getText());
             System.out.println(tiempo);
         } else if(elegido == btnDibujar){
-            li.rotar(angulo+=20);
-            System.out.println(angulo);
+            Globo ball= new Globo();
         }
-        
     }
+    int x=0;
+    int y=0;
     
-    int angulo=0;
     public void setLienzo(Lienzo li){
         this.li = li;
     }

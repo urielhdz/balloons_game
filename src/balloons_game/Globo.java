@@ -4,6 +4,10 @@ package balloons_game;
 public class Globo {
     private int x;
     private int y;
+    
+    public Globo(){
+        
+    }
 
     public void setX(int x) {
         this.x = x;
