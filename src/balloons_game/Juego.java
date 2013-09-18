@@ -5,11 +5,12 @@
 package balloons_game;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -37,8 +38,48 @@ public class Juego extends Canvas implements Runnable{
         this.bufferGraphics = this.bufferImg.createGraphics();
         this.bufferGraphics.drawImage(this.background, -100, 0, this.background_width,this.background_height, this);
         this.bufferGraphics.dispose();
-        this.arco = new Arco(570/2, 430,570);
+        this.arco = new Arco(570/2, 500,570);
+        
+        
+        addMouseMotionListener(new MouseMotionListener(){
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                arco.setX(e.getX());
+            }
+        });
+        
+        addMouseListener(new MouseListener(){
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Flecha f = new Flecha(arco.getX() + 35,arco.getY(),arco);
+                add_flecha(f);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+            
+        });
     }
+    
     @Override
     public void paint(Graphics g){
         update(g);

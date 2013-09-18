@@ -36,9 +36,8 @@ public class Herramientas extends JPanel implements ActionListener,KeyListener{
         btnPausar.addActionListener(this);
         btnDibujar.addActionListener(this);
       
-        
-        add(btnPausar);
         add(btnDibujar);
+        add(btnPausar);
         add(tiempotxt);
     }
     @Override
@@ -46,7 +45,7 @@ public class Herramientas extends JPanel implements ActionListener,KeyListener{
         System.out.println(e.getKeyCode());
         if(e.getKeyCode() == 32){
             Arco a = this.li.getArco();
-            Flecha f = new Flecha(a.getX(),a.getY(),a);
+            Flecha f = new Flecha(a.getX() + 35,a.getY(),a);
             this.li.add_flecha(f);
         }
         
@@ -57,7 +56,6 @@ public class Herramientas extends JPanel implements ActionListener,KeyListener{
         
         if(elegido == btnPausar){
             int tiempo = Integer.parseInt("0"+tiempotxt.getText());
-            System.out.println(tiempo);
         } else if(elegido == btnDibujar){
             this.li.add_enemigo(new Hilo());
         }
