@@ -42,7 +42,7 @@ public class Ventana extends JFrame{
         add(toolbar, BorderLayout.NORTH);
         add(li, BorderLayout.CENTER);
         
-        setSize(650,700);
+        setSize(650,600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         toolbar.setLienzo(li);
         setVisible(true);

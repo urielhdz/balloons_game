@@ -39,7 +39,11 @@ public class Hilo extends Thread{
     public void updateMovement(){
         counter++;
         Double speed = (Math.sin(this.counter * Math.PI / 117)*8);
-        this.x += speed.intValue();
+        int sp = speed.intValue();
+        if(this.x > 500 || this.x < 50){
+            this.y += 2;
+        }
+        this.x += sp;
     }
     public boolean get_is_alive(){
         return this.is_alive;

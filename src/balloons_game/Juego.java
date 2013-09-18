@@ -5,6 +5,7 @@
 package balloons_game;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -28,6 +29,7 @@ public class Juego extends Canvas implements Runnable{
     private BufferedImage bufferImg;
     private int background_width = 1200;
     private int background_height = background_width/2;
+    private boolean is_playing = true;
     private Arco arco; 
     boolean firstTime = true;
     public Juego(){
@@ -39,8 +41,6 @@ public class Juego extends Canvas implements Runnable{
         this.bufferGraphics.drawImage(this.background, -100, 0, this.background_width,this.background_height, this);
         this.bufferGraphics.dispose();
         this.arco = new Arco(570/2, 500,570);
-        
-        
         addMouseMotionListener(new MouseMotionListener(){
 
             @Override
@@ -98,10 +98,21 @@ public class Juego extends Canvas implements Runnable{
         for(Hilo enemigo : enemigos){
             if(enemigo.get_is_alive()){
                 bufferGraphics.drawImage(enemigo.get_img(), enemigo.get_x(), enemigo.get_y(),enemigo.get_width(), enemigo.get_height(), this);
+                if(enemigo.get_y() > 470){
+                    bufferGraphics.setColor(Color.black);
+                    bufferGraphics.fillRect(0, 0, 800, 700);
+                    is_playing = false;
+                    break;
+                }
             }
             
        }
+        
         for(Flecha flecha : flechas){
+            if(flecha.isInterrupted()){
+                flechas.remove(flecha);
+                break;
+            } 
             if(flecha.is_alive){
                 bufferGraphics.drawImage(flecha.get_img(), flecha.get_x(), flecha.get_y(),flecha.get_width(), flecha.get_height(), this);
                 for(Hilo enemigo : enemigos){
@@ -114,7 +125,7 @@ public class Juego extends Canvas implements Runnable{
                 }
             }
             else{
-                flechas.remove(flecha);
+                flecha.interrupt();
             }
             
        }
@@ -123,7 +134,7 @@ public class Juego extends Canvas implements Runnable{
     }
     @Override
     public void run(){
-        while(true ){
+        while(is_playing){
             try{
                 Thread.sleep(1000 / 60);
                 repaint();
@@ -167,4 +178,5 @@ public class Juego extends Canvas implements Runnable{
 	}
 	return hit;
     }
+
 }

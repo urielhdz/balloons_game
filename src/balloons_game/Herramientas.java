@@ -18,7 +18,7 @@ public class Herramientas extends JPanel implements ActionListener,KeyListener{
     private Juego li;
     
     public Herramientas(){
-        btnPausar = new JButton("Pausar Globo");
+        btnPausar = new JButton("Pausar juego");
         btnDibujar = new JButton("Dibujar Globo");
         tiempotxt = new JTextField(15);
         
@@ -42,7 +42,6 @@ public class Herramientas extends JPanel implements ActionListener,KeyListener{
     }
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println(e.getKeyCode());
         if(e.getKeyCode() == 32){
             Arco a = this.li.getArco();
             Flecha f = new Flecha(a.getX() + 35,a.getY(),a);
