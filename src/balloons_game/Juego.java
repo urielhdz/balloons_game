@@ -1,17 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package balloons_game;
+
+import Xbox.ButtonListener;
+import Xbox.RightAxisListener;
+import Xbox.TriggersListener;
+import Xbox.XboxController;
 
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -41,7 +39,64 @@ public class Juego extends Canvas implements Runnable{
         this.bufferGraphics.drawImage(this.background, -100, 0, this.background_width,this.background_height, this);
         this.bufferGraphics.dispose();
         this.arco = new Arco(570/2, 500,570);
-        addMouseMotionListener(new MouseMotionListener(){
+        
+        XboxController xboxC = new XboxController();
+        Thread t1 = new Thread(xboxC);
+        t1.start();
+        xboxC.addRightAxisListener(new RightAxisListener(){
+            public void rightAxisMoveHorizontal(float movement) {
+                //System.out.println("Movimiento Horizontal = "+movement);
+                if(movement < 0){
+                    arco.setX(arco.getX() -12);
+                }else{
+                    arco.setX(arco.getX()+12);
+                }
+                //arco.setX((int) (arco.getX()*(+movement)));
+            }
+            public void rightAxisMoveVertical(float movement) {
+                //System.out.println("Movimiento Vertical = "+movement);
+            }
+        });
+        
+        xboxC.addButtonListener(new ButtonListener(){
+            public void aButtonPressed() {
+                add_enemigo(new Hilo());
+            }
+            public void bButtonPressed() {
+            }
+            public void xButtonPressed() {
+            }
+            public void yButtonPressed() {
+            }
+            public void lbButtonPressed() {
+            }
+            public void rbButtonPressed() {
+            }
+            public void backButtonPressed() {
+            }
+            public void startButtonPressed() {
+            }
+            public void leftStickButtonPressed() {
+            }
+            public void rightStickButtonPressed() {
+            }
+        });
+        
+        xboxC.addTriggersListener(new TriggersListener(){
+
+            public void rightTriggerPressed(boolean press) {
+                
+            }
+
+            public void leftTriggerPressed(boolean press) {
+                Flecha f = new Flecha(arco.getX() + 35,arco.getY(),arco);
+                add_flecha(f);
+            }
+            
+        });
+        
+        
+       /* addMouseMotionListener(new MouseMotionListener(){
 
             @Override
             public void mouseDragged(MouseEvent e) {
@@ -77,7 +132,7 @@ public class Juego extends Canvas implements Runnable{
             public void mouseExited(MouseEvent e) {
             }
             
-        });
+        });*/
     }
     
     @Override
